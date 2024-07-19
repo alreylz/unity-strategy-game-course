@@ -1,24 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    private GridSystem _gridSystem;
+    [SerializeField] private Unit chosenUnit;
 
-
-    [SerializeField] private Transform debugCellPrefab;
-
-
-    void Start()
-    {
-        _gridSystem = new GridSystem(10, 10);
-        if (debugCellPrefab)
-            _gridSystem.CreateDebugObjects(debugCellPrefab, transform.root);
-    }
 
     void Update()
     {
-        InputController.GetMouseWorldPosition(out Vector3 mousePosition);
-
-        Debug.Log($"The mouse in grid position : {_gridSystem.GetGridPosition(mousePosition)}");
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log($"Printing valid actions for unit {chosenUnit}");
+            List<GridPosition> gridPositions = chosenUnit.GetUnitMoveAction().GetValidActionGridPositionList();
+            foreach (var pos in gridPositions)
+            {
+                Debug.Log(pos);
+            }
+        }
     }
 }

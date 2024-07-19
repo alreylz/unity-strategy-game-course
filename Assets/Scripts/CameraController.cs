@@ -69,13 +69,15 @@ public class CameraController : MonoBehaviour
         float maxZoomCap = 20;
 
         float mouseDelta = Input.mouseScrollDelta.y;
-        Debug.Log(mouseDelta);
+        // Debug.Log(mouseDelta);
         // Determines whether to zoom in or out
         float zoomDirection = mouseDelta == 0 ? 0 : mouseDelta > 0 ? 1 : -1;
 
         if (zoomDirection != 0)
         {
-            Debug.Log(zoomDirection);
+            // Debug.Log(zoomDirection);
+            //@remove Flip
+            zoomDirection *= -1;
             Vector3 zoomedVector = _targetFollowOffset + new Vector3(0, 1, 0) * zoomDirection * _zoomSpeed;
 
             Vector3 nuFollowOffset =

@@ -11,9 +11,7 @@ public class UnitActionSystem : MonoBehaviour
 
     [SerializeField] private Unit _selectedUnit;
 
-
     public event EventHandler OnSelectedUnitChanged;
-
 
     private void Awake()
     {
@@ -37,12 +35,14 @@ public class UnitActionSystem : MonoBehaviour
         // LEFT MOUSE BUTTON (Unit selection)
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Left mouse button pressed");
             HandleUnitSelection();
         }
 
         // RIGHT MOUSE BUTTON for moving the selected unit (if any)
         if (Input.GetMouseButtonDown(1))
         {
+            Debug.Log("Right mouse button pressed");
             HandleUnitMovement();
         }
     }
@@ -62,15 +62,20 @@ public class UnitActionSystem : MonoBehaviour
 
     void HandleUnitMovement()
     {
-        Debug.Log("Right mouse button pressed");
         if (InputController.GetMouseWorldPosition(out Vector3 worldPosSelected))
-            _selectedUnit?.Move(worldPosSelected);
+        {
+            GridPosition toMoveInGridPosition = LevelGrid.Instance.GetGridPosition(worldPosSelected);
+
+            MoveAction unitMoveAction = _selectedUnit.GetUnitMoveAction();
+            //Check validity of movement
+            if (unitMoveAction.GetValidActionGridPositionList().Contains(toMoveInGridPosition))
+                unitMoveAction.Move(toMoveInGridPosition);
+        }
     }
+
 
     void HandleUnitSelection()
     {
-        Debug.Log("Left mouse button pressed");
-
         Unit unit = InputController.GetMouseSelectable<Unit>();
         if (unit != _selectedUnit)
             SetSelectedUnit(unit);

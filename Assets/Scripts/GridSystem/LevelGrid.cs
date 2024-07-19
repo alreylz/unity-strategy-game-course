@@ -2,13 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Represents the grid instance in the scene of a given level. Offers methods to interact with the contents of the grid cells.
+/// Represents the grid instance in the scene of a given level.
+/// Offers methods to interact with the contents of the grid cells.
 /// </summary>
 public class LevelGrid : MonoBehaviour
 {
-    private GridSystem _gridSystem;
-    [SerializeField] private Transform debugCellPrefab;
     public static LevelGrid Instance { get; private set; }
+
+    private GridSystem _gridSystem;
+
+    /// <summary>
+    /// Visual prefab to show data about the grid cells in the Scene 
+    /// </summary>
+    [SerializeField] private Transform debugCellPrefab;
 
 
     private void Awake()
@@ -54,4 +60,16 @@ public class LevelGrid : MonoBehaviour
 
 
     public GridPosition GetGridPosition(Vector3 worldPosition) => _gridSystem.GetGridPosition(worldPosition);
+    public Vector3 GetWorldPosition(GridPosition gridPosition) => _gridSystem.GetWorldPosition(gridPosition);
+
+
+    public bool IsValidGridPosition(GridPosition gridPosition)
+    {
+        return _gridSystem.IsValidGridPosition(gridPosition);
+    }
+
+    public bool IsEmptyGridPosition(GridPosition gridPosition)
+    {
+        return _gridSystem.GetGridObject(gridPosition).HasAnyUnit();
+    }
 }

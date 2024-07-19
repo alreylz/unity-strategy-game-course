@@ -1,6 +1,8 @@
 ﻿using System;
-using UnityEngine;
 
+/// <summary>
+/// Represents coordinates of cells in a custom Grid System
+/// </summary>
 public struct GridPosition : IEquatable<GridPosition>
 {
     public int x;
@@ -22,6 +24,17 @@ public struct GridPosition : IEquatable<GridPosition>
     {
         return !(a == b);
     }
+
+    public static GridPosition operator +(GridPosition a, GridPosition b)
+    {
+        return new GridPosition(a.x + b.x, a.z + b.z);
+    }
+
+    public static GridPosition operator -(GridPosition a, GridPosition b)
+    {
+        return new GridPosition(a.x - b.x, a.z - b.z);
+    }
+
 
     public override string ToString()
     {

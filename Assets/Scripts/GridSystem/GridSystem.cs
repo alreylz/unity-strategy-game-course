@@ -46,6 +46,19 @@ public class GridSystem
     {
         return _gridObjectsArray[gridPosition.x, gridPosition.z];
     }
+    
+
+    public bool IsValidGridPosition(GridPosition gridPosition)
+    {
+        return gridPosition.x >= 0 &&
+               gridPosition.x < _width &&
+               gridPosition.z >= 0 &&
+               gridPosition.x < _height;
+    }
+    
+    public int GetWidth() => _width;
+    public int GetHeight() => _height;
+
 
     // Converts grid coordinates in real 3d world coordinates
     public Vector3 GetWorldPosition(int x, int z)
@@ -67,9 +80,8 @@ public class GridSystem
             Mathf.RoundToInt(worldPosition.z / _cellSize));
     }
 
-    public void CreateDebugObjects(Transform debugPrefab, Transform hierarchyParent )
+    public void CreateDebugObjects(Transform debugPrefab, Transform hierarchyParent)
     {
-        
         for (int x = 0; x < this._width; x++)
         {
             for (int z = 0; z < this._height; z++)

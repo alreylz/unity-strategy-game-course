@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7499665269551583802}
   - component: {fileID: 4196280799132700121}
   - component: {fileID: 4002126952851899249}
+  - component: {fileID: 684282577364058182}
   m_Layer: 6
   m_Name: Unit
   m_TagString: Untagged
@@ -70,6 +71,22 @@ CapsuleCollider:
   m_Height: 2.3749146
   m_Direction: 1
   m_Center: {x: 0, y: 0.6874573, z: 0}
+--- !u!114 &684282577364058182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864213196742181304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c75396dd91fd244a64adfb939c43ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 4
+  _stoppingDistance: 0.1
+  _unit: {fileID: 0}
+  _unitAnimator: {fileID: 7959885317669120738}
 --- !u!1 &6872588261891054648
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +622,12 @@ PrefabInstance:
       addedObject: {fileID: 600647900312405021}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dbb22b9d53a7664b8619d4c6888d92f, type: 3}
+--- !u!95 &7959885317669120738 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95485627480488536, guid: 8dbb22b9d53a7664b8619d4c6888d92f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8008537212736164026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8010752478590776956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4471465929434822, guid: 8dbb22b9d53a7664b8619d4c6888d92f,
