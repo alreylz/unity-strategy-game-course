@@ -18,4 +18,18 @@ public class Testing : MonoBehaviour
             }
         }
     }
+
+
+    // [ContextMenu("Show Unit Valid Positions")]
+    // public void ShowUnitPositionsTest()
+    // {
+    //     List<GridPosition> gridPositions = chosenUnit.GetUnitMoveAction().GetValidActionGridPositionList();
+    //     FindObjectOfType<GridSystemVisual>().ShowGridPositionVisualSet(gridPositions.ToArray());
+    // }
+    //
+    // [ContextMenu("HideAllPositions")]
+    // public void HideAllPositionsVisuals()
+    // {
+    //     FindObjectOfType<GridSystemVisual>().HideAllGridPositionVisuals();
+    // }
 }
